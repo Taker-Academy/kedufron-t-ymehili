@@ -22,6 +22,6 @@ Stéphane, le dev backend, vous explique avec ses mots les différentes pages de
 
 "*Bref ! C'est pas tout, mais après tu auras aussi un bouton "valider ma commande". Bien sûr, avant ça, tu devras faire remplir à l'utilisateur un formulaire de contact, email, adresse, nom de rue, et nom + prénom, la classique ! Tu envoies ensuite ta commande sous la forme indiquée dans ma documentation à mon API ! Moi je te renverrai un id de commande et la date estimée d'arrivée des produits!*"
 
-"*Oh et aussi ! On n'est pas des sauvages, donc cet id là, tu vas l'envoyer par mail à l'utilisateur qui a fait la commande ! Pour ça, tu as plein de manières gratuites et rapides, **MailJet** par exemple!*"
+"*Oh et aussi ! On n'est pas des sauvages, donc cet id là, tu vas l'afficher à l'utilisateur dans un **pop-up**, afin de lui confirmer la bonne reception de sa commande*"
 
 "*Voili, voilou, je te laisse t'occuper de l'UI/UX et des maquettes. En vrai, c'est un gros POC, on n'attend pas un truc de fou, tant que ça marche et que ce n'est pas trop moche c'est good !*"
