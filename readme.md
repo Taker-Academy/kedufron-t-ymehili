@@ -1,5 +1,7 @@
 # KeDuFron't 🛒
 
+![taker academy logo](https://github.com/Taker-Academy/KeDuFron-t/assets/86067803/597e2e8c-c815-45e0-a243-715dcee4a742)
+
 Bienvenue dans ce second projet, après vos exploits chez Junior Conseil Triper, un chasseur de tête vous a repéré et engagé dans une start-up très prometteuse: KDF !
 
 Vous êtes à présent le lead et le seul dev front de la boîte !
