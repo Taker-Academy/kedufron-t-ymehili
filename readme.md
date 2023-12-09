@@ -56,6 +56,12 @@ Stéphane, le dev backend, vous explique avec ses mots les différentes pages de
 - Le code devra être **hébergé** sur une **Github Page**.
 - Interdiction d'utiliser des **librairies externes**. (sauf Axios)
 
+## Ressources 📚
+
+- [Documentation de l'API](./API%20documentation.md)
+- [Local Storage](https://developer.mozilla.org/fr/docs/Web/API/Window/localStorage)
+- [Axios Documentation](https://axios-http.com/)
+
 ## Les livrables attendus 📦
 
 - Votre **repository** avec le code source.
@@ -63,4 +69,6 @@ Stéphane, le dev backend, vous explique avec ses mots les différentes pages de
 
 ## Deadline ⏳
 
-Vous avez jusqu'au **10 Mars 2024**, 23h42 pour rendre votre projet.  
+Vous avez jusqu'au **10 Mars 2024**, 23h42 pour rendre votre projet.
+
+## Bon courage et bon code ! 💪
