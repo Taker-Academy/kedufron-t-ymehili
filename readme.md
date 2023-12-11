@@ -61,6 +61,15 @@ Stéphane, le dev backend, vous explique avec ses mots les différentes pages de
 - [Documentation de l'API](./API%20documentation.md)
 - [Local Storage](https://developer.mozilla.org/fr/docs/Web/API/Window/localStorage)
 - [Axios Documentation](https://axios-http.com/)
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse)
+- [Github Pages](https://pages.github.com/)
+
+## Bonus 🏆
+
+- Utilisation de **SASS**.
+- Utilisation de **Tailwind**.
+- Atteindre un score de **95+** de SEO/Performance/Accessibilité sur Lighthouse.
+- Utilisation de **Docker**.
 
 ## Les livrables attendus 📦
 
