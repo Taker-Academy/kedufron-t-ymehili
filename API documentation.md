@@ -2,7 +2,7 @@
 
 # URL de l'API
 
-> https://api.kedufront.juniorconseiltaker.com/
+> [https://api.kedufront.juniorconseiltaker.com/](https://api.kedufront.juniortaker.com/)
 
 # Models
 
