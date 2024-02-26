@@ -8,7 +8,8 @@
 
 ## Modèle d'Item
 
-Le modèle d'Item représente une entité d'élément avec des propriétés telles que le nom, la description, le prix, l'image, et la date de création.
+Le modèle d'Item représente une entité d'élément avec des propriétés telles que
+le nom, la description, le prix, l'image, et la date de création.
 
 ### Propriétés du Modèle
 
