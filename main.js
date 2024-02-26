@@ -6,19 +6,18 @@ fetch('https://api.kedufront.juniortaker.com/item/')
             const itemElement = document.createElement('div');
             itemElement.classList.add('item-box');
 
-            id = item._id;
+            const imageElement = document.createElement('img');
+            imageElement.src = `https://api.kedufront.juniortaker.com/item/picture/${item._id}`;
+            imageElement.classList.add('item-image');
+            itemElement.appendChild(imageElement);
+
             const nameElement = document.createElement('p');
             nameElement.textContent = item.name;
             nameElement.classList.add('item-name');
             itemElement.appendChild(nameElement);
 
-            const imageElement = document.createElement('img');
-            imageElement.src = `https://api.kedufront.juniortaker.com/item/picture/${id}`;
-            imageElement.classList.add('item-image');
-            itemElement.appendChild(imageElement);
-
             const priceElement = document.createElement('p');
-            priceElement.textContent = item.price;
+            priceElement.textContent = item.price + ' €';
             priceElement.classList.add('item-price');
             itemElement.appendChild(priceElement);
 
