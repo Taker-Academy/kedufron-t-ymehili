@@ -11,8 +11,13 @@ fetch('https://api.kedufront.juniortaker.com/item/')
             imageElement.classList.add('item-image');
             itemElement.appendChild(imageElement);
 
+            const descElement = document.createElement('p');
+            descElement.textContent = item.description;
+            descElement.classList.add('item-desc');
+            itemElement.appendChild(descElement);
+
             const nameElement = document.createElement('p');
-            nameElement.textContent = item.name;
+            nameElement.textContent = item.name.toUpperCase();
             nameElement.classList.add('item-name');
             itemElement.appendChild(nameElement);
 
