@@ -30,16 +30,13 @@ fetch('https://api.kedufront.juniortaker.com/item/')
 
             itemsContainer.appendChild(itemElement);
         });
+        const itemBoxes = document.querySelectorAll('.item-box');
+        itemBoxes.forEach(box => {
+            box.addEventListener('click', () => {
+                const id = box.getAttribute('id');
+                console.log(`Box with id ${id} was clicked`);
+                window.location.href = `product/product.html?id=${id}`;
+            });
+        });
     })
     .catch(error => console.error('Error:', error));
-
-
-
-const itemBoxes = document.querySelectorAll('.item-box');
-
-itemBoxes.forEach(box => {
-    box.addEventListener('click', () => {
-        const id = box.getAttribute('id');
-        window.location.href = `product/product.html?id=${id}`;
-    });
-});
