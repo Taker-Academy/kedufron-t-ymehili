@@ -3,7 +3,13 @@
     src: url('./assets/MadeInfinityBlack.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'madeinfinityregular';
+    src: url('./assets/MadeInfinityRegular.otf') format('opentype');
+}
+
 body {
+    font-family: madeinfinityregular;
     background-color: white;
     margin-left: 5%;
     margin-right: 5%;
@@ -90,16 +96,18 @@ header h1 {
 footer {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin-top: 20px;
     margin-bottom: 20px;
     border-top: 1px solid #e0e0e0;
     margin-top: 5%;
+    padding-left: 5%;
 }
 
 .about {
     width: 30%;
+    padding-right: 10%;
 }
 
 .contact {
@@ -108,6 +116,13 @@ footer {
 
 .info {
     width: 30%;
+}
+
+.info h3, .about h3, .contact h3 {
+    font-family: madeinfinityblack;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 0;
 }
 
 @media screen and (max-width: 425px) {
