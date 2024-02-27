@@ -129,4 +129,12 @@ footer {
     .item-box {
         width: 100%;
     }
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+    .about, .contact, .info {
+        width: 100%;
+        padding-right: 0;
+    }
 }

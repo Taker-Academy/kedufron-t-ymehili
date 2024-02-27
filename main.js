@@ -6,6 +6,8 @@ fetch('https://api.kedufront.juniortaker.com/item/')
             const itemElement = document.createElement('div');
             itemElement.classList.add('item-box');
 
+            itemElement.id = item._id;
+
             const imageElement = document.createElement('img');
             imageElement.src = `https://api.kedufront.juniortaker.com/item/picture/${item._id}`;
             imageElement.classList.add('item-image');
@@ -30,3 +32,12 @@ fetch('https://api.kedufront.juniortaker.com/item/')
         });
     })
     .catch(error => console.error('Error:', error));
+
+const itemBoxes = document.querySelectorAll('.item-box');
+
+itemBoxes.forEach(box => {
+    box.addEventListener('click', () => {
+        const id = box.getAttribute('id');
+        window.location.href = `product/product.html?id=${id}`;
+    });
+});
