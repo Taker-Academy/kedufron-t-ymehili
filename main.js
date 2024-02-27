@@ -33,6 +33,8 @@ fetch('https://api.kedufront.juniortaker.com/item/')
     })
     .catch(error => console.error('Error:', error));
 
+
+
 const itemBoxes = document.querySelectorAll('.item-box');
 
 itemBoxes.forEach(box => {
