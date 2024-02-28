@@ -4,10 +4,7 @@ let id = params.get('id');
 fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
     .then(response => response.json())
     .then(data => {
-        const itemContainer = document.getElementById('itemContainer');
-
-        const itemElement = document.createElement('div');
-        itemElement.classList.add('item-box');
+        const itemElement= document.getElementById('itemsContainer');
 
         const imageElement = document.createElement('img');
         imageElement.src = `https://api.kedufront.juniortaker.com/item/picture/${id}`;
@@ -15,17 +12,17 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
         itemElement.appendChild(imageElement);
 
         const priceElement = document.createElement('p');
-        priceElement.textContent = data.price + ' €';
+        priceElement.textContent = data.item.price + ' €';
         priceElement.classList.add('item-price');
         itemElement.appendChild(priceElement);
 
         const descElement = document.createElement('p');
-        descElement.textContent = data.description;
+        descElement.textContent = data.item.description;
         descElement.classList.add('item-desc');
         itemElement.appendChild(descElement);
 
         const nameElement = document.createElement('p');
-        nameElement.textContent = data.name.toUpperCase();
+        nameElement.textContent = data.item.name.toUpperCase();
         nameElement.classList.add('item-name');
         itemElement.appendChild(nameElement);
 
