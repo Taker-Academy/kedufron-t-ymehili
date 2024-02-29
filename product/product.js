@@ -42,4 +42,21 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
             console.log('Added to cart:', productId);
         });
     })
+    .then(data => {
+        const cartButton = document.getElementById("cart-button"); // Replace with your actual cart button ID
+        const cartPopup = document.getElementById("cart-popup");
+
+        cartButton.addEventListener('click', function() {
+            let cart = localStorage.getItem('cart');
+            if (cart) {
+                cart = JSON.parse(cart);
+                let cartHtml = '';
+                for (let productId in cart) {
+                    cartHtml += `<p>Product ID: ${productId}, Quantity: ${cart[productId]}</p>`;
+                }
+                cartPopup.innerHTML = cartHtml;
+            }
+            cartPopup.classList.toggle('show');
+        });
+    })
     .catch(error => console.error('Error:', error));
