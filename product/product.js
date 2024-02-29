@@ -26,8 +26,20 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
 
         addToCartButton.addEventListener('click', function() {
             const productId = id;
-            console.log(productId);
-            localStorage.setItem('cart', JSON.stringify(productId));
+            let cart = localStorage.getItem('cart');
+            if (cart) {
+                cart = JSON.parse(cart);
+                if (cart[productId]) {
+                    cart[productId]++;
+                } else {
+                    cart[productId] = 1;
+                }
+            } else {
+                cart = {};
+                cart[productId] = 1;
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            console.log('Added to cart:', productId);
         });
     })
     .catch(error => console.error('Error:', error));
