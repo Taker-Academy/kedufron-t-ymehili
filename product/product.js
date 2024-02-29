@@ -43,7 +43,7 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
         });
     })
     .then(data => {
-        const cartButton = document.getElementById("cart-button"); // Replace with your actual cart button ID
+        const cartButton = document.getElementById("cart-button");
         const cartPopup = document.getElementById("cart-popup");
 
         cartButton.addEventListener('click', function() {
@@ -52,7 +52,23 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
                 cart = JSON.parse(cart);
                 let cartHtml = '';
                 for (let productId in cart) {
-                    cartHtml += `<p>Product ID: ${productId}, Quantity: ${cart[productId]}</p>`;
+                    console.log('productId:', productId);
+                    fetch(`https://api.kedufront.juniortaker.com/item/${productId}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            cartHtml += `
+                                <div class="cart-item">
+                                    <img src="https://api.kedufront.juniortaker.com/item/picture/${productId}" alt="${data.item.name}">
+                                    <p>${data.item.name}</p>
+                                    <p>Quantity: ${cart[productId]}</p>
+                                    <button class="increase">+</button>
+                                    <button class="decrease">-</button>
+                                    <button class="delete">Delete</button>
+                                </div>
+                            `;
+                            console.log('cartHtml:', cartHtml);
+                        })
+                        .catch(error => console.error('Error:', error));
                 }
                 cartPopup.innerHTML = cartHtml;
             }
