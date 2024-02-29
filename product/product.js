@@ -58,11 +58,16 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
                             return `
                                 <div class="cart-item">
                                     <img src="https://api.kedufront.juniortaker.com/item/picture/${productId}" alt="${data.item.name}">
-                                    <p>${data.item.name}</p>
-                                    <p>Quantity: ${cart[productId]}</p>
-                                    <button class="increase">+</button>
-                                    <button class="decrease">-</button>
-                                    <button class="delete">Delete</button>
+                                    <div class="cart-item-info">
+                                        <p>${data.item.name}</p>
+                                        <p>${data.item.price} €</p>
+                                        <div class="cart-item-quantity">
+                                            <button class="decrease">-</button>
+                                            <p>Quantity: ${cart[productId]}</p>
+                                            <button class="increase">+</button>
+                                        </div>
+                                        <button class="delete">Delete</button>
+                                    </div>
                                 </div>
                             `;
                         })
