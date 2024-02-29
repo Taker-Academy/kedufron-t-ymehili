@@ -55,7 +55,7 @@ a button {
     background-color:none;
 }
 
-.cart {
+#cart-button {
     align-items: right;
     padding: 10px;
     background-color: white;
@@ -64,7 +64,7 @@ a button {
     transition: all 0.3s ease;
 }
 
-.cart:hover {
+#cart-button:hover {
     transform: scale(1.1, 1.1);
     z-index: 100;
     color: rgb(30, 30, 30);
