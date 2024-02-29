@@ -50,13 +50,12 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
             let cart = localStorage.getItem('cart');
             if (cart) {
                 cart = JSON.parse(cart);
-                let cartHtml = '';
+                let fetchPromises = [];
                 for (let productId in cart) {
-                    console.log('productId:', productId);
-                    fetch(`https://api.kedufront.juniortaker.com/item/${productId}`)
+                    let fetchPromise = fetch(`https://api.kedufront.juniortaker.com/item/${productId}`)
                         .then(response => response.json())
                         .then(data => {
-                            cartHtml += `
+                            return `
                                 <div class="cart-item">
                                     <img src="https://api.kedufront.juniortaker.com/item/picture/${productId}" alt="${data.item.name}">
                                     <p>${data.item.name}</p>
@@ -66,11 +65,13 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
                                     <button class="delete">Delete</button>
                                 </div>
                             `;
-                            console.log('cartHtml:', cartHtml);
                         })
                         .catch(error => console.error('Error:', error));
+                    fetchPromises.push(fetchPromise);
                 }
-                cartPopup.innerHTML = cartHtml;
+                Promise.all(fetchPromises).then(cartItemsHtml => {
+                    cartPopup.innerHTML = cartItemsHtml.join('');
+                });
             }
             cartPopup.classList.toggle('show');
         });
