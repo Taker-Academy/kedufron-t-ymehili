@@ -8,7 +8,6 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
 
         const imageElement = document.getElementById('item-image');
         imageElement.src = `https://api.kedufront.juniortaker.com/item/picture/${id}`;
-        itemElement.appendChild(imageElement);
 
         const nameElement = document.getElementById('item-name');
         nameElement.textContent = data.item.name.toUpperCase();
@@ -21,5 +20,14 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
         const descElement = document.getElementById('item-desc');
         descElement.textContent = data.item.description;
         descElement.classList.add('item-desc');
+    })
+    .then(data => {
+        const addToCartButton = document.getElementById("addtocart");
+
+        addToCartButton.addEventListener('click', function() {
+            const productId = id;
+            console.log(productId);
+            localStorage.setItem('cart', JSON.stringify(productId));
+        });
     })
     .catch(error => console.error('Error:', error));
