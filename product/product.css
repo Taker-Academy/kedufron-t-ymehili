@@ -46,6 +46,15 @@ a {
     background-color:none;
 }
 
+a button {
+    text-decoration: none;
+    color: black;
+    background-color:white;
+    border:none;
+    outline:none;
+    background-color:none;
+}
+
 .cart {
     align-items: right;
     padding: 10px;
