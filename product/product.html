@@ -4,15 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="product.css">
+    <script src="https://kit.fontawesome.com/b22f362430.js" crossorigin="anonymous"></script>
     <script src="product.js"></script>
     <title>Product page - KEDUFRONT</title>
 </head>
 <body>
     <header>
-        <h1>KEDUFRONT</h1>
+        <a href="../index.html">
+            <h1>KEDUFRONT</h1>
+        </a>
+        <button class="cart"><i class="fas fa-xl fa-shopping-cart"></i></button>
     </header>
     <section class="items">
         <div id="itemsContainer">
+            <img id="item-image">
+            <div id='text-container'>
+                <p id="item-name"></p>
+                <p id="item-price"></p>
+                <p id="item-desc"></p>
+                <button class="addtocart">Add to cart</button>
+            </div>
         </div>
     </section>
     <footer>

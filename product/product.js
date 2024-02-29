@@ -6,28 +6,20 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
     .then(data => {
         const itemElement= document.getElementById('itemsContainer');
 
-        const imageElement = document.createElement('img');
+        const imageElement = document.getElementById('item-image');
         imageElement.src = `https://api.kedufront.juniortaker.com/item/picture/${id}`;
-        imageElement.classList.add('item-image');
         itemElement.appendChild(imageElement);
 
-        const textContainer = document.createElement('div');
-        textContainer.classList.add('text-container');
-        itemElement.appendChild(textContainer);
-
-        const nameElement = document.createElement('p');
+        const nameElement = document.getElementById('item-name');
         nameElement.textContent = data.item.name.toUpperCase();
         nameElement.classList.add('item-name');
-        textContainer.appendChild(nameElement);
 
-        const priceElement = document.createElement('p');
+        const priceElement = document.getElementById('item-price');
         priceElement.textContent = data.item.price + ' €';
         priceElement.classList.add('item-price');
-        textContainer.appendChild(priceElement);
 
-        const descElement = document.createElement('p');
+        const descElement = document.getElementById('item-desc');
         descElement.textContent = data.item.description;
         descElement.classList.add('item-desc');
-        textContainer.appendChild(descElement);
     })
     .catch(error => console.error('Error:', error));
