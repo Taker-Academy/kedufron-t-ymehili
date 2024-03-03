@@ -1,6 +1,54 @@
 let params = new URLSearchParams(window.location.search);
 let id = params.get('id');
 
+function updateCartHtml() {
+    cartPopup.innerHTML = cartItemsHtml.join('');
+
+    const increaseButtons = document.querySelectorAll('.increase');
+    const decreaseButtons = document.querySelectorAll('.decrease');
+    const deleteButtons = document.querySelectorAll('.delete');
+
+    increaseButtons.forEach((button, index) => {
+        button.addEventListener('click', function() {
+            let cart = JSON.parse(localStorage.getItem('cart'));
+            const productId = Object.keys(cart)[index];
+            cart[productId]++;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            console.log('Increased quantity:', productId);
+            updateCartHtml();
+            cartPopup.classList.toggle('show');
+        });
+    });
+
+    decreaseButtons.forEach((button, index) => {
+        button.addEventListener('click', function() {
+            let cart = JSON.parse(localStorage.getItem('cart'));
+            const productId = Object.keys(cart)[index];
+            if (cart[productId] > 1) {
+                cart[productId]--;
+            } else {
+                delete cart[productId];
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            console.log('Decreased quantity:', productId);
+            updateCartHtml();
+            cartPopup.classList.toggle('show');
+        });
+    });
+
+    deleteButtons.forEach((button, index) => {
+        button.addEventListener('click', function() {
+            let cart = JSON.parse(localStorage.getItem('cart'));
+            const productId = Object.keys(cart)[index];
+            delete cart[productId];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            console.log('Deleted item:', productId);
+            updateCartHtml();
+            cartPopup.classList.toggle('show');
+        });
+    });
+}
+
 fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
     .then(response => response.json())
     .then(data => {
@@ -56,17 +104,18 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
                         .then(response => response.json())
                         .then(data => {
                             return `
-                                <div class="cart-item">
+                                <div class="cart-item" itemid=${productId}>
                                     <img src="https://api.kedufront.juniortaker.com/item/picture/${productId}" alt="${data.item.name}">
                                     <div class="cart-item-info">
-                                        <p>${data.item.name}</p>
-                                        <p>${data.item.price} €</p>
+                                        <p class="cart-item-title">${data.item.name}</p>
+                                        <p class="cart-item-price">${data.item.price} €</p>
                                         <div class="cart-item-quantity">
                                             <button class="decrease">-</button>
                                             <p>Quantity: ${cart[productId]}</p>
                                             <button class="increase">+</button>
+                                            <button class="delete"><i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
                                         </div>
-                                        <button class="delete">Delete</button>
                                     </div>
                                 </div>
                             `;
@@ -76,6 +125,49 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
                 }
                 Promise.all(fetchPromises).then(cartItemsHtml => {
                     cartPopup.innerHTML = cartItemsHtml.join('');
+
+                    const increaseButtons = document.querySelectorAll('.increase');
+                    const decreaseButtons = document.querySelectorAll('.decrease');
+                    const deleteButtons = document.querySelectorAll('.delete');
+
+                    increaseButtons.forEach((button, index) => {
+                        button.addEventListener('click', function() {
+                            let cart = JSON.parse(localStorage.getItem('cart'));
+                            const productId = Object.keys(cart)[index];
+                            cart[productId]++;
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            console.log('Increased quantity:', productId);
+                            updateCartHtml();
+                        });
+                    });
+
+                    decreaseButtons.forEach((button, index) => {
+                        button.addEventListener('click', function() {
+                            let cart = JSON.parse(localStorage.getItem('cart'));
+                            const productId = Object.keys(cart)[index];
+                            if (cart[productId] > 1) {
+                                cart[productId]--;
+                            } else {
+                                delete cart[productId];
+                            }
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            console.log('Decreased quantity:', productId);
+                            updateCartHtml();
+                            cartPopup.classList.toggle('show');
+                        });
+                    });
+
+                    deleteButtons.forEach((button, index) => {
+                        button.addEventListener('click', function() {
+                            let cart = JSON.parse(localStorage.getItem('cart'));
+                            const productId = Object.keys(cart)[index];
+                            delete cart[productId];
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            console.log('Deleted item:', productId);
+                            updateCartHtml();
+                            cartPopup.classList.toggle('show');
+                        });
+                    });
                 });
             }
             cartPopup.classList.toggle('show');
