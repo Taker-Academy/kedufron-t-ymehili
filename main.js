@@ -73,6 +73,8 @@ fetch('https://api.kedufront.juniortaker.com/item/')
                     fetchPromises.push(fetchPromise);
                 }
                 Promise.all(fetchPromises).then(cartItemsHtml => {
+                    const checkoutButtonHtml = `<button id="checkout-button">Checkout</button>`;
+                    cartItemsHtml.push(checkoutButtonHtml);
                     cartPopup.innerHTML = cartItemsHtml.join('');
 
                     const increaseButtons = document.querySelectorAll('.increase');
@@ -111,6 +113,10 @@ fetch('https://api.kedufront.juniortaker.com/item/')
                             localStorage.setItem('cart', JSON.stringify(cart));
                             console.log('Deleted item:', productId);
                         });
+                    });
+                    const checkoutButton = document.getElementById("checkout-button");
+                    checkoutButton.addEventListener('click', function() {
+                        console.log('Checkout button clicked');
                     });
                 });
             }

@@ -158,25 +158,6 @@ a button {
     gap: 10px;
 }
 
-#buy-now {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #008CBA;
-    color: white;
-    text-align: center;
-    font-size: 20px;
-    margin-top: 20px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    z-index: 1000;
-}
-
-#buy-now:hover {
-    background-color: #007B9A;
-}
-
 #itemsContainer {
     display: flex;
     flex-direction: row;

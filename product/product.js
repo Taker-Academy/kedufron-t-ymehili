@@ -121,6 +121,7 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
                     });
                 });
             }
+            cartPopup.classList.toggle('show');
         });
     })
     .catch(error => console.error('Error:', error));
