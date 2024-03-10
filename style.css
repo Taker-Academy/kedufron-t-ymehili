@@ -315,12 +315,16 @@ footer {
         padding-right: 0;
     }
     .cart-popup {
-        width: 100%;
+        width: 90%;
         height: 100%;
         max-width: 425px;
         top: 12%;
         left: 0;
         right: 0;
         border: none;
+    }
+    #checkout-form {
+        width: 70%;
+        max-width: 425px;
     }
 }

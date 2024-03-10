@@ -126,13 +126,15 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
                         const email = document.getElementById('email').value;
                         const name = document.getElementById('name').value;
                         const address = document.getElementById('address').value;
-                        const cart = JSON.parse(localStorage.getItem('cart'));
+                        let cart = JSON.parse(localStorage.getItem('cart'));
+                        cart = Object.entries(cart).map(([id, amount]) => ({id: Number(id), amount}));
                         const data = {
                             email: email,
                             name: name,
                             address: address,
                             cart: cart
                         };
+                        console.log('Checkout:', JSON.stringify(data));
                         checkoutPopup.style.display = "none";
                         fetch('https://api.kedufront.juniortaker.com/order', {
                             method: 'POST',
