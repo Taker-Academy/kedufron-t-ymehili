@@ -4,8 +4,6 @@ let id = params.get('id');
 fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
     .then(response => response.json())
     .then(data => {
-        const itemElement= document.getElementById('itemsContainer');
-
         const imageElement = document.getElementById('item-image');
         imageElement.src = `https://api.kedufront.juniortaker.com/item/picture/${id}`;
 
@@ -21,7 +19,7 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
         descElement.textContent = data.item.description;
         descElement.classList.add('item-desc');
     })
-    .then(data => {
+    .then(() => {
         const addToCartButton = document.getElementById("addtocart");
 
         addToCartButton.addEventListener('click', function() {
@@ -42,7 +40,7 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
             console.log('Added to cart:', productId);
         });
     })
-    .then(data => {
+    .then(() => {
         const cartButton = document.getElementById("cart-button");
         const cartPopup = document.getElementById("cart-popup");
 
@@ -76,6 +74,8 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
                     fetchPromises.push(fetchPromise);
                 }
                 Promise.all(fetchPromises).then(cartItemsHtml => {
+                    const checkoutButtonHtml = `<button id="checkout-button">Checkout</button>`;
+                    cartItemsHtml.push(checkoutButtonHtml);
                     cartPopup.innerHTML = cartItemsHtml.join('');
 
                     const increaseButtons = document.querySelectorAll('.increase');
@@ -115,9 +115,12 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
                             console.log('Deleted item:', productId);
                         });
                     });
+                    const checkoutButton = document.getElementById("checkout-button");
+                    checkoutButton.addEventListener('click', function() {
+                        console.log('Checkout button clicked');
+                    });
                 });
             }
-            cartPopup.classList.toggle('show');
         });
     })
     .catch(error => console.error('Error:', error));

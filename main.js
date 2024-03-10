@@ -39,28 +39,7 @@ fetch('https://api.kedufront.juniortaker.com/item/')
             });
         });
     })
-    .then(data => {
-        const addToCartButton = document.getElementById("addtocart");
-
-        addToCartButton.addEventListener('click', function() {
-            const productId = id;
-            let cart = localStorage.getItem('cart');
-            if (cart) {
-                cart = JSON.parse(cart);
-                if (cart[productId]) {
-                    cart[productId]++;
-                } else {
-                    cart[productId] = 1;
-                }
-            } else {
-                cart = {};
-                cart[productId] = 1;
-            }
-            localStorage.setItem('cart', JSON.stringify(cart));
-            console.log('Added to cart:', productId);
-        });
-    })
-    .then(data => {
+    .then(() => {
         const cartButton = document.getElementById("cart-button");
         const cartPopup = document.getElementById("cart-popup");
 
