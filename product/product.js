@@ -1,54 +1,6 @@
 let params = new URLSearchParams(window.location.search);
 let id = params.get('id');
 
-function updateCartHtml() {
-    cartPopup.innerHTML = cartItemsHtml.join('');
-
-    const increaseButtons = document.querySelectorAll('.increase');
-    const decreaseButtons = document.querySelectorAll('.decrease');
-    const deleteButtons = document.querySelectorAll('.delete');
-
-    increaseButtons.forEach((button, index) => {
-        button.addEventListener('click', function() {
-            let cart = JSON.parse(localStorage.getItem('cart'));
-            const productId = Object.keys(cart)[index];
-            cart[productId]++;
-            localStorage.setItem('cart', JSON.stringify(cart));
-            console.log('Increased quantity:', productId);
-            updateCartHtml();
-            cartPopup.classList.toggle('show');
-        });
-    });
-
-    decreaseButtons.forEach((button, index) => {
-        button.addEventListener('click', function() {
-            let cart = JSON.parse(localStorage.getItem('cart'));
-            const productId = Object.keys(cart)[index];
-            if (cart[productId] > 1) {
-                cart[productId]--;
-            } else {
-                delete cart[productId];
-            }
-            localStorage.setItem('cart', JSON.stringify(cart));
-            console.log('Decreased quantity:', productId);
-            updateCartHtml();
-            cartPopup.classList.toggle('show');
-        });
-    });
-
-    deleteButtons.forEach((button, index) => {
-        button.addEventListener('click', function() {
-            let cart = JSON.parse(localStorage.getItem('cart'));
-            const productId = Object.keys(cart)[index];
-            delete cart[productId];
-            localStorage.setItem('cart', JSON.stringify(cart));
-            console.log('Deleted item:', productId);
-            updateCartHtml();
-            cartPopup.classList.toggle('show');
-        });
-    });
-}
-
 fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
     .then(response => response.json())
     .then(data => {
@@ -137,7 +89,6 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
                             cart[productId]++;
                             localStorage.setItem('cart', JSON.stringify(cart));
                             console.log('Increased quantity:', productId);
-                            updateCartHtml();
                         });
                     });
 
@@ -152,8 +103,6 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
                             }
                             localStorage.setItem('cart', JSON.stringify(cart));
                             console.log('Decreased quantity:', productId);
-                            updateCartHtml();
-                            cartPopup.classList.toggle('show');
                         });
                     });
 
@@ -164,8 +113,6 @@ fetch(`https://api.kedufront.juniortaker.com/item/${id}`)
                             delete cart[productId];
                             localStorage.setItem('cart', JSON.stringify(cart));
                             console.log('Deleted item:', productId);
-                            updateCartHtml();
-                            cartPopup.classList.toggle('show');
                         });
                     });
                 });

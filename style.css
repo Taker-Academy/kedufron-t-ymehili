@@ -54,7 +54,7 @@ a button {
     background-color:none;
 }
 
-.cart {
+#cart-button {
     align-items: right;
     padding: 10px;
     background-color: white;
@@ -63,10 +63,99 @@ a button {
     transition: all 0.3s ease;
 }
 
-.cart:hover {
+#cart-button:hover {
     transform: scale(1.1, 1.1);
     z-index: 100;
     color: rgb(30, 30, 30);
+}
+
+.cart-popup {
+    display: flex;
+    position: fixed;
+    top: 11%;
+    bottom: 0;
+    right: 5%;
+    border: 3px solid black;
+    width: 425px;
+    background-color: white;
+    overflow: auto;
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    display: none;
+}
+
+.cart-popup.show {
+    transform: translateX(0);
+    display: block;
+}
+
+.cart-item {
+    display: flex;
+    flex-direction: row;;
+    border-bottom: grey 1px solid;
+    padding-bottom: 20px;
+}
+
+.cart-item img {
+    width: 40%;
+    object-fit: contain;
+    margin-right: 20px;
+    margin-left : 10px;
+}
+
+.cart-item-info {
+    margin-top: 0;;
+}
+
+.increase, .decrease {
+    font-family: madeinfinityregular;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 0;
+    background-color: white;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.delete, .increase, .decrease{
+    background-color: white;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.delete:hover, .increase:hover, .decrease:hover {
+    transform: scale(1.1, 1.1);
+    z-index: 100;
+    color: rgb(30, 30, 30);
+}
+
+.cart-item-title {
+    font-family: madeinfinityblack;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 0;
+}
+
+.cart-item-price {
+    font-family: madeinfinityblack;
+    font-size: 20px;
+    color: gray;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.cart-item-quantity {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    gap: 10px;
 }
 
 #itemsContainer {
