@@ -115,8 +115,37 @@ fetch('https://api.kedufront.juniortaker.com/item/')
                         });
                     });
                     const checkoutButton = document.getElementById("checkout-button");
+                    const checkoutPopup = document.querySelector(".checkout-popup");
                     checkoutButton.addEventListener('click', function() {
-                        console.log('Checkout button clicked');
+                        checkoutPopup.style.display = "block";
+                    });
+                    const checkoutForm = document.getElementById('checkout-form');
+                    checkoutForm.addEventListener('submit', function(event) {
+                        event.preventDefault();
+                        const email = document.getElementById('email').value;
+                        const name = document.getElementById('name').value;
+                        const address = document.getElementById('address').value;
+                        const cart = JSON.parse(localStorage.getItem('cart'));
+                        const data = {
+                            email: email,
+                            name: name,
+                            address: address,
+                            cart: cart
+                        };
+                        fetch('https://api.kedufront.juniortaker.com/order', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(data),
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('Success:', data);
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
                     });
                 });
             }
