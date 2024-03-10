@@ -159,6 +159,21 @@ a button {
     gap: 10px;
 }
 
+#checkout-button {
+    font-family: madeinfinityblack;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 0;
+    background-color: black;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+    margin-top: 50px;
+}
+
 #itemsContainer {
     display: flex;
     flex-direction: row;
