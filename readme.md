@@ -78,6 +78,6 @@ Stéphane, le dev backend, vous explique avec ses mots les différentes pages de
 
 ## Deadline ⏳
 
-Vous avez jusqu'au **10 Mars 2024**, 23h42 pour rendre votre projet.
+Vous avez jusqu'au **26 Février 2025**, 23h42 pour rendre votre projet.
 
 ## Bon courage et bon code ! 💪
